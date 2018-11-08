@@ -1,4 +1,10 @@
-import { JSONAPISerializer } from 'ember-cli-mirage';
+import { Serializer } from 'ember-cli-mirage';
+import { capitalize } from '@ember/string';
 
-export default JSONAPISerializer.extend({
+export default Serializer.extend({
+  embed: true,
+  root: false,
+  keyForAttribute(attr) {
+    return capitalize(attr);
+  }
 });

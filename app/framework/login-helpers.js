@@ -9,6 +9,7 @@ import appConfig from './app-config';
 import { getParameterByName } from './url-helpers';
 import { getLanguage } from './translate';
 import $ from 'jquery';
+import ENV from 'kursausschreibung/config/environment';
 
 /**
  * return true if there is a valid token in the localStorage
@@ -37,6 +38,8 @@ function parseJWT(accessToken) {
 
 // save the OAuth token if there is one in the URL
 export function checkToken() {
+  if (ENV.environment === 'development') return;
+
   let accessToken = getParameterByName('access_token');
 
   if (accessToken !== null) {
@@ -59,6 +62,8 @@ export function checkToken() {
  * get a new accesToken otherwise
  */
 export function autoCheckForLogin() {
+  if (ENV.environment === 'development') return Promise.resolve();
+
   if (isLoggedIn()) {
     return Promise.resolve();
   }
