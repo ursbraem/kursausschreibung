@@ -1,7 +1,14 @@
 window.kursausschreibung = window.kursausschreibung || {};
 window.kursausschreibung.settings = {
   // only show events with one of these hostIds (optional)
-  "hostIds": null,
+  "initialListFilters": {
+    "HostIds": null,
+    "EventCategoryIds": null,
+    "EventLevelIds": null,
+    "EventTypeIds": null,
+    "StatusIds": null,
+  },
+
 
   // items per page on the event-list (required)
   "itemsPerPage": 10,
